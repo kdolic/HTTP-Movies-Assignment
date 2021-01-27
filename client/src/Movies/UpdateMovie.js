@@ -8,7 +8,7 @@ const initialMovie = {
     title: '',
     director: '',
     metascore: '',
-    stars: ''
+    stars: []
 }
 
 const UpdateMovie = (props) => {
@@ -38,7 +38,7 @@ const UpdateMovie = (props) => {
     const handleSubmit = event => {
         event.preventDefault();
         axios
-        .put(`http://localhost:5000//api/movies/${id}`, movie)
+        .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
         .then(res => {
             console.log(res.data)
             props.setMovieList(props.movieList.map(movieItem => {
@@ -54,7 +54,7 @@ const UpdateMovie = (props) => {
                 metascore: '',
                 stars: ''
             })
-            push(`/movies/${id}`)
+            push(`/movies/${movie.id}`)
         })
         .catch(err => {
             console.log(err)
@@ -63,7 +63,7 @@ const UpdateMovie = (props) => {
 
 
     return (
-        <div>
+        <div className='save-wrapper'>
             <h2>Update Movie</h2>
             <form onSubmit={handleSubmit}>
                 <input
@@ -81,7 +81,7 @@ const UpdateMovie = (props) => {
                     value={movie.director}
                 />
                 <input
-                    type='text'
+                    type='number'
                     name='metastore'
                     onChange={changeHandler}
                     placeholder='Movie Metascore...'
