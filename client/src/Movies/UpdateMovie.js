@@ -7,7 +7,7 @@ const initialMovie = {
     id: '',
     title: '',
     director: '',
-    metascore: '',
+    metascore: null,
     stars: []
 }
 
@@ -29,6 +29,10 @@ const UpdateMovie = (props) => {
 
 
     const changeHandler = event => {
+    //     let value = event.target.value;
+    //     if (event.target.name === "metascore") {
+    //     value = parseInt(value, 10);
+    // }
         setMovie({
             ...movie,
             [event.target.name]: event.target.value
@@ -52,7 +56,7 @@ const UpdateMovie = (props) => {
                 title: '',
                 director: '',
                 metascore: '',
-                stars: ''
+                stars: []
             })
             push(`/movies/${movie.id}`)
         })
@@ -63,7 +67,7 @@ const UpdateMovie = (props) => {
 
 
     return (
-        <div className='save-wrapper'>
+        <div>
             <h2>Update Movie</h2>
             <form onSubmit={handleSubmit}>
                 <input
@@ -87,6 +91,13 @@ const UpdateMovie = (props) => {
                     placeholder='Movie Metascore...'
                     value={movie.metascore}
                 />
+                {/* <input
+                    type='text'
+                    name='stars'
+                    onChange={changeHandler}
+                    placeholder='Add Movie Stars...'
+                    value={movie.stars}
+                /> */}
 
                 <button>Update</button>
             </form>
