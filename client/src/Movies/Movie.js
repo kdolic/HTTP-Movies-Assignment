@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
-function Movie({ addToSavedList, movieList, setMovieList }) {
+function Movie({ addToSavedList, movieList, setMovieList, getMovieList }) {
   const [movie, setMovie] = useState(null);
   const {push} = useHistory();
   const params = useParams();

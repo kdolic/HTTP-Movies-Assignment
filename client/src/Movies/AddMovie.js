@@ -12,7 +12,7 @@ const initialMovie = {
     stars: []
 }
 
-const AddMovie = ({movieList, setMovieList}) => {
+const AddMovie = ({movieList, setMovieList, getMovieList}) => {
     const {push} = useHistory();
     const {id} = useParams();
     const [movie, setMovie] = useState(initialMovie);
@@ -31,7 +31,7 @@ const AddMovie = ({movieList, setMovieList}) => {
         .post(`http://localhost:5000/api/movies`, movie)
         .then(res => {
             console.log(res.data)
-            setMovieList([...MovieList, res.data]);
+            getMovieList();
             setMovie({
                 title: '',
                 director: '',
@@ -68,13 +68,13 @@ const AddMovie = ({movieList, setMovieList}) => {
                     placeholder='Add Movie Metascore...'
                     value={movie.metascore}
                 />
-                <input
+                {/* <input
                     type='text'
                     name='stars'
                     onChange={changeHandler}
                     placeholder='Add Movie Stars...'
                     value={movie.stars}
-                />
+                /> */}
 
                 <button>Add Movie</button>
             </form>

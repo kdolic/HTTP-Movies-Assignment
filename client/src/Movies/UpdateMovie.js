@@ -44,7 +44,7 @@ const UpdateMovie = (props) => {
         axios
         .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
         .then(res => {
-            console.log(res.data)
+            console.log('PUT RESPONSE: ', res.data)
             props.setMovieList(props.movieList.map(movieItem => {
                 if(movieItem.id === res.data.id) {
                     return res.data
@@ -55,7 +55,7 @@ const UpdateMovie = (props) => {
             setMovie({
                 title: '',
                 director: '',
-                metascore: '',
+                metascore: null,
                 stars: []
             })
             push(`/movies/${movie.id}`)
@@ -86,7 +86,7 @@ const UpdateMovie = (props) => {
                 />
                 <input
                     type='number'
-                    name='metastore'
+                    name='metascore'
                     onChange={changeHandler}
                     placeholder='Movie Metascore...'
                     value={movie.metascore}
