@@ -12,7 +12,7 @@ const initialMovie = {
     stars: []
 }
 
-const AddMovie = ({movieList, setMovieList, getMovieList}) => {
+const AddMovie = (props) => {
     const {push} = useHistory();
     const {id} = useParams();
     const [movie, setMovie] = useState(initialMovie);
@@ -31,14 +31,14 @@ const AddMovie = ({movieList, setMovieList, getMovieList}) => {
         .post(`http://localhost:5000/api/movies`, movie)
         .then(res => {
             console.log(res.data)
-            getMovieList();
+            props.getMovieList();
             setMovie({
                 title: '',
                 director: '',
                 metascore: null,
                 stars: []
             })
-            push(`/movies`)
+            push(`/`)
         })
     }
 
